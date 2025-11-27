@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WeatherTools {
 
-    @Bean
-    public ToolCallbackProvider toolCallbackProvider(WeatherService weatherService) {
-        return MethodToolCallbackProvider
-                .builder()
-                .toolObjects(weatherService)
-                .build();
-    }
+    // Add tool that return weather alerts for a US state
+    // The tool uses the WeatherForecastService.GetAlerts to perform the actual API calls
+    // ...
+
+
+
+    // Add tool that return weather forecast for a location
+    // The tool uses the WeatherForecastService.GetForecast to perform the actual API calls
+    // ...
 }
