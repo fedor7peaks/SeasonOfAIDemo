@@ -1,6 +1,6 @@
 package com.example.allocation;
 
-import com.example.allocation.tool.AllocationTools;
+import com.example.allocation.tools.*;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
 import org.springframework.boot.SpringApplication;
@@ -15,10 +15,26 @@ public class AllocationApplication {
     }
 
     @Bean
-    public ToolCallbackProvider toolCallbackProvider(AllocationTools allocationTools) {
+    public ToolCallbackProvider toolCallbackProvider(
+            ListEngineersTool listEngineersTool,
+            ListProjectsTool listProjectsTool,
+            ListAllocationsTool listAllocationsTool,
+            GetEngineerByIdTool getEngineerByIdTool,
+            GetProjectByIdTool getProjectByIdTool,
+            GetAllocationByIdTool getAllocationByIdTool,
+            AllocateEngineerTool allocateEngineerTool,
+            UpdateAllocationTool updateAllocationTool) {
         return MethodToolCallbackProvider
                 .builder()
-                .toolObjects(allocationTools)
+                .toolObjects(
+                        listEngineersTool,
+                        listProjectsTool,
+                        listAllocationsTool,
+                        getEngineerByIdTool,
+                        getProjectByIdTool,
+                        getAllocationByIdTool,
+                        allocateEngineerTool,
+                        updateAllocationTool)
                 .build();
     }
 }
